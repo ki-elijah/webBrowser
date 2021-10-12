@@ -53,6 +53,6 @@ class MainWindow(QMainWindow):
         self.url_bar.setText(q.toString())
         
 app = QApplication(sys.argv)
-QApplication.setApplicationName('browser by Elijah')
+QApplication.setApplicationName('by elijah')
 window = MainWindow()
 app.exec_()
