@@ -22,3 +22,17 @@ class MainWindow(QMainWindow):
         forwardbtn.triggered.connect(self.browser.forward)
         navbar.addAction(forwardbtn)
         
+        reloadbtn = QAction('reload', self)
+        reloadbtn.triggered.connect(self.browser.reload)
+        navbar.addAction(reloadbtn)
+        
+        homebtn = QAction('home', self)
+        homebtn.triggered.connect(self.browser.home)
+        navbar.addAction(homebtn)
+        
+        self.url_bar = QLineEdit()
+        self.url_bar.returnPressed.connect(self.navigate_to_url)
+        navbar.addWidget(self.url_bar)
+        self.browser.urlChanged.connect(self.update_url)
+        
+        
