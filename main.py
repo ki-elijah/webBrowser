@@ -16,7 +16,7 @@ class MainWindow(QMainWindow):
         
         backbtn = QAction('back', self)
         backbtn.triggered.connect(self.browser.back)
-        navbar.addWidget(backbtn)
+        navbar.addAction(backbtn)
         
         forwardbtn = QAction('forward', self)
         forwardbtn.triggered.connect(self.browser.forward)
@@ -27,7 +27,7 @@ class MainWindow(QMainWindow):
         navbar.addAction(reloadbtn)
         
         homebtn = QAction('home', self)
-        homebtn.triggered.connect(self.browser.home)
+        homebtn.triggered.connect(self.navigate_home)
         navbar.addAction(homebtn)
         
         self.url_bar = QLineEdit()
@@ -35,14 +35,17 @@ class MainWindow(QMainWindow):
         navbar.addWidget(self.url_bar)
         self.browser.urlChanged.connect(self.update_url)
         
+    def navigate_developer(self):
+        self.browser.setUrl(QUrl('https://www.google.com'))
+        
     def navigate_home(self):
-        self.browser.setUrl(QUrl('http://copyassignment.com'))
+        self.browser.setUrl(QUrl('https://www.google.com'))
     
     def navigate_to_url(self):
         url = self.url_bar.text()
         self.browser.setUrl(QUrl(url))
         
-    def update_url(self):
+    def update_url(self, q):
         self.url_bar.setText(q.toString())
         
 app = QApplication(sys.argv)
