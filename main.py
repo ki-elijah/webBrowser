@@ -35,4 +35,17 @@ class MainWindow(QMainWindow):
         navbar.addWidget(self.url_bar)
         self.browser.urlChanged.connect(self.update_url)
         
+    def navigate_home(self):
+        self.browser.setUrl(QUrl('http://copyassignment.com'))
+    
+    def navigate_to_url(self):
+        url = self.url_bar.text()
+        self.browser.setUrl(QUrl(url))
         
+    def update_url(self):
+        self.url_bar.setText(q.toString())
+        
+app = QApplication(sys.argv)
+QApplication.setApplicationName('browser by Elijah')
+window = MainWindow()
+app.exec_()
