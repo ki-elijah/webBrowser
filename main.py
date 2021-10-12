@@ -30,13 +30,17 @@ class MainWindow(QMainWindow):
         homebtn.triggered.connect(self.navigate_home)
         navbar.addAction(homebtn)
         
+        devbtn = QAction('Developer', self)
+        devbtn.triggered.connect(self.navigate_developer)
+        navbar.addAction(devbtn)
+        
         self.url_bar = QLineEdit()
         self.url_bar.returnPressed.connect(self.navigate_to_url)
         navbar.addWidget(self.url_bar)
         self.browser.urlChanged.connect(self.update_url)
         
     def navigate_developer(self):
-        self.browser.setUrl(QUrl('https://www.google.com'))
+        self.browser.setUrl(QUrl('https://elijahknsubuga.netlify.app/'))
         
     def navigate_home(self):
         self.browser.setUrl(QUrl('https://www.google.com'))
